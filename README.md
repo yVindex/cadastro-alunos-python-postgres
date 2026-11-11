@@ -16,32 +16,32 @@
 
 ## 📑 Sumário
 
-- [Sobre o projeto](#-sobre-o-projeto)
-- [Aluno](#-aluno)
-- [Funcionalidades](#-funcionalidades)
-- [Exemplo de uso](#-exemplo-de-uso)
-- [Validações e segurança](#-validações-e-segurança)
-- [Tecnologias](#-tecnologias)
-- [Estrutura do projeto](#-estrutura-do-projeto)
-- [Como executar](#-como-executar)
-- [Banco de dados](#-banco-de-dados)
+- [Sobre o projeto](#sobre)
+- [Aluno](#aluno)
+- [Funcionalidades](#funcionalidades)
+- [Exemplo de uso](#exemplo-de-uso)
+- [Validações e segurança](#validacoes-e-seguranca)
+- [Tecnologias](#tecnologias)
+- [Estrutura do projeto](#estrutura)
+- [Como executar](#como-executar)
+- [Banco de dados](#banco-de-dados)
 
 ---
 
-## 📌 Sobre o projeto
+## <a id="sobre"></a>📌 Sobre o projeto
 
 Sistema interativo de cadastro e gerenciamento de alunos via terminal (CLI) desenvolvido em Python e integrado com PostgreSQL. O projeto faz a persistência de dados no banco de dados e conta com um CRUD completo, validação de entradas, consultas parametrizadas e cálculo de média de notas direto no banco.
 
 ---
 
-## 👤 Aluno
+## <a id="aluno"></a>👤 Aluno
 
 - **Nome:** Guilherme Barbosa da Silva França
 - **Matrícula:** 01879072
 
 ---
 
-## ✨ Funcionalidades
+## <a id="funcionalidades"></a>✨ Funcionalidades
 
 | Opção | Funcionalidade | Comando SQL |
 |:-----:|----------------|-------------|
@@ -55,7 +55,7 @@ Sistema interativo de cadastro e gerenciamento de alunos via terminal (CLI) dese
 
 ---
 
-## 💻 Exemplo de uso
+## <a id="exemplo-de-uso"></a>💻 Exemplo de uso
 
 ```text
 -----------SISTEMA DE CADASTRO DE ALUNOS-----------
@@ -88,7 +88,7 @@ Nota: 8.5
 
 ---
 
-## 🛡️ Validações e segurança
+## <a id="validacoes-e-seguranca"></a>🛡️ Validações e segurança
 
 - O **nome** não pode ficar vazio (espaços nas pontas são ignorados).
 - A **idade** deve ser um número inteiro entre 1 e 150.
@@ -99,7 +99,7 @@ Nota: 8.5
 
 ---
 
-## 🛠️ Tecnologias
+## <a id="tecnologias"></a>🛠️ Tecnologias
 
 - **Python 3**
 - **PostgreSQL**
@@ -108,7 +108,7 @@ Nota: 8.5
 
 ---
 
-## 📁 Estrutura do projeto
+## <a id="estrutura"></a>📁 Estrutura do projeto
 
 ```text
 cadastro-alunos-python-postgres/
@@ -122,7 +122,7 @@ cadastro-alunos-python-postgres/
 
 ---
 
-## 🚀 Como executar
+## <a id="como-executar"></a>🚀 Como executar
 
 ### 1. Pré-requisitos
 
@@ -164,7 +164,7 @@ python sistema_cadastro_alunos_db.py
 
 ---
 
-## 🗄️ Banco de dados
+## <a id="banco-de-dados"></a>🗄️ Banco de dados
 
 O banco `escola` e a tabela `alunos` são criados automaticamente, caso ainda não existam:
 
