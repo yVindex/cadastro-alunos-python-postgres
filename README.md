@@ -171,17 +171,15 @@ O banco `escola` e a tabela `alunos` são criados automaticamente, caso ainda n�
 ```sql
 CREATE TABLE IF NOT EXISTS alunos (
     id SERIAL PRIMARY KEY,
-    nome TEXT NOT NULL,
-    idade INTEGER NOT NULL,
-    nota REAL NOT NULL
+    nome TEXT NOT NULL CHECK (length(trim(nome)) > 0),
+    idade INTEGER NOT NULL CHECK (idade BETWEEN 1 AND 150),
+    nota REAL NOT NULL CHECK (nota BETWEEN 0 AND 10)
 );
 ```
 
-| Coluna | Tipo | Descrição |
-|--------|------|-----------|
+| Coluna | Tipo | Regra |
+|--------|------|-------|
 | `id` | `SERIAL` (chave primária) | Identificador único, gerado automaticamente |
-| `nome` | `TEXT` | Nome do aluno |
-| `idade` | `INTEGER` | Idade do aluno |
-| `nota` | `REAL` | Nota do aluno (0 a 10) |
-
----
+| `nome` | `TEXT` | Obrigatório e não pode ficar vazio |
+| `idade` | `INTEGER` | Obrigatória, entre 1 e 150 |
+| `nota` | `REAL` | Obrigatória, entre 0 e 10 |
