@@ -7,7 +7,24 @@ def exibir_aluno(aluno):
         f"Idade: {aluno[2]} anos\n"
         f"Nota: {aluno[3]:.1f}"
     )
-
+    
+def listar_alunos():
+    conexao = conectar()
+    cursor = conexao.cursor
+    
+    cursor.execute("SELECT id, nome, idade, nota FROM alunos ORDER BY id")
+    registros = cursor.fetchall()
+    conexao.close()
+    
+    if len(registros) == 0:
+        print("Nenhum aluno foi cadastrado.")
+        return
+    
+    print("------------------Lista de Alunos------------------")
+    for aluno in registros:
+        print(exibir_aluno(aluno))
+        print("---------------------------------------------------")
+    
 def ler_nome():
     while True:
         nome = input("Digite o nome do aluno: ").strip()
