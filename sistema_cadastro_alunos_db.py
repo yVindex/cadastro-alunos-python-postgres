@@ -75,3 +75,33 @@ def adicionar_aluno():
     conexao.close()
     
     print("Aluno cadastrado com sucesso!")
+    
+def buscar_aluno():
+    nome = input("Digite o nome do aluno que deseja buscar: ").strip()
+    
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    cursor.execute("SELECT id, nome, idade, nota FROM alunos WHERE nome ILIKE %s  ORDER BY id", (f"%{nome}%",),
+                   )
+    
+    registros = cursor.fetchall()
+    conexao.close()
+    
+    if len(registros) == 0:
+        print("Aluno não encontrado.")
+        return
+    
+    print("\nAluno(s) encontrado(s):")
+    for aluno in registros:
+        print(exibir_aluno(aluno))
+        print("---------------------------------------------------")
+        
+def ler_id(mensagem):
+    while True:
+        texto = input(mensagem).strip()
+        try:
+            return int(texto)
+        except ValueError:
+            print("O ID deve ser um numero inteiro.")
+    
