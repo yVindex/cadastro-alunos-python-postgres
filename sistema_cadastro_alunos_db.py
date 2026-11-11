@@ -32,4 +32,21 @@ def ler_nota():
             if 0 <= nota <= 10:
              return nota
             print("A nota deve estar entre 0 e 10.")
-            
+
+def adicionar_aluno():
+    nome = ler_nome()
+    idade = ler_idade()
+    nota = ler_nota()
+    
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    cursor.execute(
+        "INSERT INTO alunos (nome, idade, nota) VALUES (%s, %s, %s)",
+        (nome, idade, nota)
+    )
+    
+    conexao.commit()
+    conexao.close()
+    
+    print("Aluno cadastrado com sucesso!")
