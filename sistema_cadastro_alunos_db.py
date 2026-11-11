@@ -1,0 +1,35 @@
+from connect import conectar, criar_banco, criar_tabela
+
+def ler_nome():
+    while True:
+        nome = input("Digite o nome do aluno: ").strip()
+        if nome:
+            return nome
+        print("O nome não pode ficar vazio.")
+        
+def ler_idade():
+    while True:
+        texto = input("Digite a idade do aluno: ").strip()
+
+        try:
+            idade = int(texto)
+        except ValueError:
+            print("A idade deve ser um número inteiro.")
+            continue
+
+        if idade > 0:
+            return idade
+        print("A idade deve ser maior que 0.")
+        
+def ler_nota():
+     while True:
+            texto = input("Digite a nota do aluno: ").strip().replace(",", ".")
+            try:
+                nota = float(texto)
+            except ValueError:
+                print("A nota deve ser um número.")
+                continue
+            if 0 <= nota <= 10:
+             return nota
+            print("A nota deve estar entre 0 e 10.")
+            
