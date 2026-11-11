@@ -91,7 +91,7 @@ Nota: 8.5
 ## 🛡️ Validações e segurança
 
 - O **nome** não pode ficar vazio (espaços nas pontas são ignorados).
-- A **idade** deve ser um número inteiro maior que 0.
+- A **idade** deve ser um número inteiro entre 1 e 150.
 - A **nota** deve ser um número entre 0 e 10 (aceita vírgula ou ponto: `8,5` ou `8.5`).
 - O **ID** deve ser um número inteiro, e o sistema confere se o aluno existe antes de atualizar ou remover.
 - Todas as consultas são **parametrizadas** (`%s`), sem concatenar valores digitados dentro do SQL, o que evita *SQL injection*.

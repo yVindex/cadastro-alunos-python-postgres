@@ -46,9 +46,9 @@ def ler_idade():
             print("A idade deve ser um número inteiro.")
             continue
 
-        if idade > 0:
+        if 0 < idade <= 150:
             return idade
-        print("A idade deve ser maior que 0.")
+        print("A idade deve estar entre 1 e 150.")
 
 
 def ler_nota():
