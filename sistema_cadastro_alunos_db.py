@@ -104,4 +104,39 @@ def ler_id(mensagem):
             return int(texto)
         except ValueError:
             print("O ID deve ser um numero inteiro.")
+            
+def atualizar_aluno():
+    id_aluno = ler_id("Digite o ID do aluno que deseja atualizar: ")
+    
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    cursor.execute(
+        "SELECT id, nome, idade, nota FROM alunos WHERE id = %s",
+        (id_aluno,),
+    )
+    
+    aluno = cursor.fetchone()
+    
+    if aluno is None:
+        print("Aluno não encontrado.")
+        conexao.close()
+        return
+    
+    print("Dados atuais:")
+    print(exibir_aluno(aluno))
+    print("\nDigite os novos dados:")
+    
+    nome = ler_nome()
+    idade = ler_idade()
+    nota = ler_nota()
+    
+    cursor.execute(
+        "UPDATE alunos SET nome = %s, idade = %s, nota = %s",
+        (nome, idade, nota,)
+    )
+    
+    conexao.commit()
+    conexao.close()
+    print("Aluno atualizado com sucesso!")
     
