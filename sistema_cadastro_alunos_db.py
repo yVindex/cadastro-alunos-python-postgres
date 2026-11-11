@@ -1,5 +1,13 @@
 from connect import conectar, criar_banco, criar_tabela
 
+def exibir_aluno(aluno):
+    return(
+        f"ID: {aluno[0]}\n"
+        f"Nome: {aluno[1]}\n"
+        f"Idade: {aluno[2]} anos\n"
+        f"Nota: {aluno[3]:.1f}"
+    )
+
 def ler_nome():
     while True:
         nome = input("Digite o nome do aluno: ").strip()
