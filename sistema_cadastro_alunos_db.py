@@ -140,3 +140,28 @@ def atualizar_aluno():
     conexao.close()
     print("Aluno atualizado com sucesso!")
     
+def remover_aluno():
+    id_aluno = ler_id("Digite o ID do aluno que deseja remover: ")
+    
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    cursor.execute(
+        "SELECT id FROM alunos WHERE id = %s",
+        (id_aluno,)
+    )
+    
+    if cursor.fetchone() is None:
+        print("Aluno não encontrado.")
+        conexao.close()
+        return
+    
+    cursor.execute(
+        "DELETE FROM alunos WHERE id = %s",
+        (id_aluno,)
+    )
+    
+    conexao.commit()
+    conexao.close()
+
+    print("Aluno removido com sucesso!")
