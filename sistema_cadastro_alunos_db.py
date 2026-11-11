@@ -10,7 +10,7 @@ def exibir_aluno(aluno):
     
 def listar_alunos():
     conexao = conectar()
-    cursor = conexao.cursor
+    cursor = conexao.cursor()
     
     cursor.execute("SELECT id, nome, idade, nota FROM alunos ORDER BY id")
     registros = cursor.fetchall()
@@ -132,8 +132,8 @@ def atualizar_aluno():
     nota = ler_nota()
     
     cursor.execute(
-        "UPDATE alunos SET nome = %s, idade = %s, nota = %s",
-        (nome, idade, nota,)
+        "UPDATE alunos SET nome = %s, idade = %s, nota = %s WHERE id = %s",
+        (nome, idade, nota, id_aluno,)
     )
     
     conexao.commit()
@@ -174,7 +174,7 @@ def mostrar_media():
         "SELECT AVG(nota) FROM alunos"
     )
     
-    media = cursor.fetchone(0)[0]
+    media = cursor.fetchone()[0]
     conexao.close()
     
     if media is None:
@@ -193,3 +193,34 @@ def exibir_menu():
     print("6. Mostrar média geral das notas")
     print("7. Sair")
     print("---------------------------------------------------")
+    
+def main():
+    criar_banco()
+    criar_tabela()
+
+    while True:
+        exibir_menu()
+        opcao = input("Digite uma opção: ").strip()
+        print("---------------------------------------------------")
+
+        if opcao == "1":
+            adicionar_aluno()
+        elif opcao == "2":
+            listar_alunos()
+        elif opcao == "3":
+            buscar_aluno()
+        elif opcao == "4":
+            atualizar_aluno()
+        elif opcao == "5":
+            remover_aluno()
+        elif opcao == "6":
+            mostrar_media()
+        elif opcao == "7":
+            print("Saindo......")
+            break
+        else:
+            print("Opção inválida. Digite uma opção de 1 a 7.")
+
+
+if __name__ == "__main__":
+    main()
