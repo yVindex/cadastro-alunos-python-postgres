@@ -11,7 +11,7 @@ SENHA = os.getenv("DB_PASSWORD", "")
 NOME_BANCO = os.getenv("DB_NAME", "escola")
 
 def conectar():
-    return psycopg2(
+    return psycopg2.connect(
         host = HOST, port = PORTA, dbname = NOME_BANCO, user = USUARIO, password = SENHA
     )
     
@@ -21,13 +21,13 @@ def criar_banco():
     )
     
     conexao.autocommit = True
-    cursor = conexao.cursos()
+    cursor = conexao.cursor()
     
     cursor.execute("SELECT 1 FROM pg_database WHERE datname = %s", (NOME_BANCO,))
     if cursor.fetchone() is None:
         cursor.execute(f"CREATE DATABASE {NOME_BANCO}")
         
-    conexao.close
+    conexao.close()
     
 def criar_tabela():
     conexao = conectar()
