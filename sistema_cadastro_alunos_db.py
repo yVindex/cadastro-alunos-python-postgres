@@ -165,3 +165,20 @@ def remover_aluno():
     conexao.close()
 
     print("Aluno removido com sucesso!")
+    
+def mostrar_media():
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    cursor.execute(
+        "SELECT AVG(nota) FROM alunos"
+    )
+    
+    media = cursor.fetchone(0)[0]
+    conexao.close()
+    
+    if media is None:
+        print("Nenhum aluno cadastrado.")
+        return
+    
+    print(f"A média geral é {media:.2f}")
