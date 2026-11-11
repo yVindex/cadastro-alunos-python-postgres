@@ -182,3 +182,14 @@ def mostrar_media():
         return
     
     print(f"A média geral é {media:.2f}")
+    
+def exibir_menu():
+    print("-----------SISTEMA DE CADASTRO DE ALUNOS-----------")
+    print("1. Cadastrar aluno")
+    print("2. Listar todos os alunos")
+    print("3. Buscar aluno pelo nome")
+    print("4. Atualizar dados de um aluno")
+    print("5. Remover aluno")
+    print("6. Mostrar média geral das notas")
+    print("7. Sair")
+    print("---------------------------------------------------")
