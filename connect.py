@@ -41,9 +41,9 @@ def criar_tabela():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS alunos (
             id SERIAL PRIMARY KEY,
-            nome TEXT NOT NULL,
-            idade INTEGER NOT NULL,
-            nota REAL NOT NULL
+            nome TEXT NOT NULL CHECK (length(trim(nome)) > 0),
+            idade INTEGER NOT NULL CHECK (idade BETWEEN 1 AND 150),
+            nota REAL NOT NULL CHECK (nota BETWEEN 0 AND 10)
         )
     """)
     conexao.commit()
