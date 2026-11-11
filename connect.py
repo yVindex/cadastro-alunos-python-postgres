@@ -30,5 +30,22 @@ def criar_banco():
     conexao.close
     
 def criar_tabela():
+    conexao = conectar()
+    cursor = conexao.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS alunos (
+            id SERIAL PRIMARY KEY,
+            nome TEXT NOT NULL,
+            idade INTEGER NOT NULL,
+            nota REAL NOT NULL
+        )
+    """)
+    conexao.commit()
+    conexao.close()
+    
+if __name__ == "__main__":
+    criar_banco()
+    criar_tabela()
+    print("Conectou! Banco e tabela prontos.")
     
     
